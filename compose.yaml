@@ -8,6 +8,12 @@ services:
     ports:
       - "${REDIS_PORT:-6379}:6379"
       - "${REDIS_INSIGHT_PORT:-8001}:8001"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1'
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD:-}
       ENABLE_IPV6: ${ENABLE_IPV6:-false}
