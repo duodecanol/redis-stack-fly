@@ -1,0 +1,26 @@
+services:
+  redis-stack:
+    image: redis-stack-fly:${REDIS_VERSION:-latest}
+    build:
+      context: .
+      args:
+        REDIS_VERSION: ${REDIS_VERSION:-latest}
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+      - "${REDIS_INSIGHT_PORT:-8001}:8001"
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      ENABLE_IPV6: ${ENABLE_IPV6:-false}
+      ENABLE_REDISINSIGHT: ${ENABLE_REDISINSIGHT:-false}
+      LOG_LEVEL: debug
+    volumes:
+      - redis_data:/data:rw
+    networks:
+      - ip6net
+
+volumes:
+  redis_data:
+
+networks:
+  ip6net:
+    enable_ipv6: true

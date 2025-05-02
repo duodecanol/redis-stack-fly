@@ -1,6 +1,6 @@
-ARG REDIS_VERSION=6.2.6
-FROM redis:${REDIS_VERSION}-alpine
+ARG REDIS_VERSION=latest
+FROM redis/redis-stack:${REDIS_VERSION}
 
 COPY start-redis-server.sh /usr/bin/start-redis-server.sh
 
-CMD ["/usr/bin/start-redis-server.sh"]
+ENTRYPOINT ["/usr/bin/start-redis-server.sh"]
