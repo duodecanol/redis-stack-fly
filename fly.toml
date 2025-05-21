@@ -1,5 +1,5 @@
 app = "redis-stack"
-primary_region = "nrt"
+primary_region = "sea"
 
 [mounts]
   destination = "/data"
@@ -16,7 +16,7 @@ primary_region = "nrt"
 [[vm]]
   memory = "1gb"
   cpu_kind = "shared"
-  cpus = 1
+  cpus = 4
 
 
 # https://fly.io/docs/reference/configuration/#the-checks-section
